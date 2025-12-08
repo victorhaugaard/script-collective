@@ -4,9 +4,10 @@ A luxurious, minimalistic landing page for Script Collective - Building Future S
 
 ## Tech Stack
 
-- **Next.js 15** - React framework with static site generation
+- **Next.js 16** - React framework
 - **TypeScript** - Type-safe development
 - **CSS Modules** - Scoped styling
+- **Vercel** - Deployment platform
 
 ## Development
 
@@ -20,36 +21,49 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-## Deployment to Netlify
+## Deployment
 
-1. Push this repository to GitHub
-2. Connect your GitHub repository to Netlify
-3. Configure build settings:
-   - Build command: `npm run build`
-   - Publish directory: `out`
-4. Add your custom domain `scriptcollective.com` in Netlify's domain settings
-5. Deploy!
+This project is configured for Vercel deployment. See [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) for detailed instructions.
 
-The site is configured for static export and will work perfectly with Netlify.
+### Quick Deploy
+
+1. Push to GitHub
+2. Import to Vercel
+3. Deploy!
 
 ## Features
 
-- Luxurious, minimalistic design inspired by Framer, Linear, and Apple
-- Responsive design (works beautifully on mobile and desktop)
+- Luxurious, minimalistic dark mode design
+- Inspired by Framer, Linear, and Apple
+- Responsive design (mobile & desktop)
 - Custom minimalistic logo
-- Contact modal with your information
-- "Get Access" modal for project requests (placeholder form ready for backend integration)
+- Contact modal with CEO information
+- Access request form with Formspree integration
 - Smooth animations and modern UI
 - Black, white, and gold/beige color palette
-- Artistic gradient orbs inspired by modern design
+
+## Form Setup
+
+To receive access requests, set up Formspree:
+
+1. Sign up at https://formspree.io
+2. Create a new form and get your Form ID
+3. Update `app/page.tsx` line 26 with your Form ID
+4. Push changes
+
+See [FORM_SETUP.md](FORM_SETUP.md) for more options.
 
 ## Customization
 
-- Colors can be adjusted in `app/page.module.css`
-- Content can be modified in `app/page.tsx`
-- Fonts and global styles in `app/globals.css`
+- Colors: Edit `app/page.module.css`
+- Content: Edit `app/page.tsx`
+- Global styles: Edit `app/globals.css`
 
 ## Author
 
-CEO - Victor Haugaard
+CEO - Victor Haugaard  
 victortomashaugaard@gmail.com
+
+## License
+
+© 2024 Script Collective. All rights reserved.
