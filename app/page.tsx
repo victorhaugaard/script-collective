@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { useRouter } from 'next/navigation'
 import styles from './page.module.css'
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState('')
-  const router = useRouter()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -25,7 +23,7 @@ export default function Home() {
     }
 
     try {
-      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const response = await fetch('https://formspree.io/f/xqardddb', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,24 +43,15 @@ export default function Home() {
     }
   }
 
-  const handleAccessClick = () => {
-    // Navigate directly to projects page instead of showing modal
-    router.push('/projects')
-  }
-
   return (
     <div className={styles.container}>
       {/* Header */}
       <header className={styles.header}>
         <div className={styles.logo}>
           <div className={styles.logoIcon}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 4L10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M4 10L10 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M4 16L10 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M18 6L24 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M18 12L24 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5" opacity="0.3"/>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3L21 21M3 21L21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5"/>
             </svg>
           </div>
           <span className={styles.logoText}>SCRIPT COLLECTIVE</span>
@@ -88,9 +77,9 @@ export default function Home() {
           </p>
           <button
             className={`${styles.accessButton} fade-in delay-2`}
-            onClick={handleAccessClick}
+            onClick={() => setIsAccessModalOpen(true)}
           >
-            <span>View Our Projects</span>
+            <span>Get Access to Projects</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -132,9 +121,78 @@ export default function Home() {
         </div>
       )}
 
+      {/* Access Modal */}
+      {isAccessModalOpen && (
+        <div className={styles.modalOverlay} onClick={() => {
+          setIsAccessModalOpen(false)
+          setIsSubmitted(false)
+          setError('')
+        }}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <button
+              className={styles.closeButton}
+              onClick={() => {
+                setIsAccessModalOpen(false)
+                setIsSubmitted(false)
+                setError('')
+              }}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+            </button>
+            
+            {isSubmitted ? (
+              <div className={styles.successMessage}>
+                <h2 className={styles.modalTitle}>Request Received!</h2>
+                <p>Thank you for your interest. We'll review your request and get back to you soon.</p>
+              </div>
+            ) : (
+              <>
+                <h2 className={styles.modalTitle}>Request Access</h2>
+                <p className={styles.modalDescription}>
+                  Enter your details to request access to Script Collective's exclusive projects
+                </p>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    className={styles.input}
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    className={styles.input}
+                    required
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your interest..."
+                    className={styles.textarea}
+                    rows={4}
+                    required
+                  />
+                  {error && <p className={styles.errorMessage}>{error}</p>}
+                  <button 
+                    type="submit" 
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Footer */}
       <footer className={styles.footer}>
-        <p>© 2024 Script Collective. All rights reserved.</p>
+        <p>© 2025 Script Collective. All rights reserved.</p>
       </footer>
     </div>
   )
