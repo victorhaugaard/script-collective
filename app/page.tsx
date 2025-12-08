@@ -1,11 +1,47 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import styles from './page.module.css'
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [isAccessModalOpen, setIsAccessModalOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError('')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+    }
+
+    try {
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again.')
+      }
+    } catch (err) {
+      setError('Failed to submit. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -87,40 +123,69 @@ export default function Home() {
 
       {/* Access Modal */}
       {isAccessModalOpen && (
-        <div className={styles.modalOverlay} onClick={() => setIsAccessModalOpen(false)}>
+        <div className={styles.modalOverlay} onClick={() => {
+          setIsAccessModalOpen(false)
+          setIsSubmitted(false)
+          setError('')
+        }}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
             <button
               className={styles.closeButton}
-              onClick={() => setIsAccessModalOpen(false)}
+              onClick={() => {
+                setIsAccessModalOpen(false)
+                setIsSubmitted(false)
+                setError('')
+              }}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </button>
-            <h2 className={styles.modalTitle}>Request Access</h2>
-            <p className={styles.modalDescription}>
-              Enter your details to request access to Script Collective's exclusive projects
-            </p>
-            <form className={styles.form}>
-              <input
-                type="text"
-                placeholder="Full Name"
-                className={styles.input}
-              />
-              <input
-                type="email"
-                placeholder="Email Address"
-                className={styles.input}
-              />
-              <textarea
-                placeholder="Tell us about your interest..."
-                className={styles.textarea}
-                rows={4}
-              />
-              <button type="submit" className={styles.submitButton}>
-                Submit Request
-              </button>
-            </form>
+            
+            {isSubmitted ? (
+              <div className={styles.successMessage}>
+                <h2 className={styles.modalTitle}>Request Received!</h2>
+                <p>Thank you for your interest. We'll review your request and get back to you soon.</p>
+              </div>
+            ) : (
+              <>
+                <h2 className={styles.modalTitle}>Request Access</h2>
+                <p className={styles.modalDescription}>
+                  Enter your details to request access to Script Collective's exclusive projects
+                </p>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    className={styles.input}
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    className={styles.input}
+                    required
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your interest..."
+                    className={styles.textarea}
+                    rows={4}
+                    required
+                  />
+                  {error && <p className={styles.errorMessage}>{error}</p>}
+                  <button 
+                    type="submit" 
+                    className={styles.submitButton}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Request'}
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       )}
