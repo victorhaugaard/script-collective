@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'Building Future Software',
   icons: {
     icon: [
+      { url: '/favicon2.svg', type: 'image/svg+xml' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon.ico', sizes: 'any' },
