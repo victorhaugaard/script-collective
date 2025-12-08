@@ -48,7 +48,7 @@ export default function Home() {
       {/* Header */}
       <header className={styles.header}>
         <div className={styles.logo}>
-          <img src="/logo.svg" alt="Script Collective" className={styles.logoImage} />
+          <img src="/logo3.svg" alt="Script Collective" className={styles.logoImage} />
         </div>
         <button
           className={styles.contactButton}
