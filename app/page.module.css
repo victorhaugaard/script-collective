@@ -22,7 +22,7 @@
 }
 
 .logoImage {
-  height: 40px;
+  height: 120px;
   width: auto;
   object-fit: contain;
 }
@@ -378,7 +378,7 @@
   }
 
   .logoImage {
-    height: 32px;
+    height: 96px;
   }
 
   .main {
@@ -418,7 +418,7 @@
   }
 
   .logoImage {
-    height: 28px;
+    height: 84px;
   }
 
   .contactButton {
