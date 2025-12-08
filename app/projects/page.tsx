@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from './projects.module.css'
 
@@ -9,6 +9,7 @@ export default function ProjectsPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     // Check if user is already authenticated
@@ -17,6 +18,13 @@ export default function ProjectsPage() {
       setIsAuthenticated(true)
     }
   }, [])
+
+  useEffect(() => {
+    // Set video playback speed to 2.5x
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 2.5
+    }
+  }, [isAuthenticated])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -100,12 +108,17 @@ export default function ProjectsPage() {
             {/* Rail Seekers Project */}
             <div className={styles.projectCard}>
               <div className={styles.projectImage}>
-                <iframe
-                  src="https://www.railseekers.com"
+                <video
+                  ref={videoRef}
                   className={styles.projectPreview}
-                  title="Rail Seekers Preview"
-                  sandbox="allow-same-origin allow-scripts"
-                />
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ transform: 'scale(1)', transformOrigin: 'center' }}
+                >
+                  <source src="/railseekers_showcase.webm" type="video/webm" />
+                </video>
               </div>
               <div className={styles.projectInfo}>
                 <h3 className={styles.projectTitle}>Rail Seekers</h3>
