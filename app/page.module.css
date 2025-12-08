@@ -19,20 +19,12 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
 }
 
-.logoIcon {
-  width: 28px;
-  height: 28px;
-  color: #c9a865;
-}
-
-.logoText {
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #ffffff;
+.logoImage {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
 }
 
 .contactButton {
@@ -385,8 +377,8 @@
     padding: 1.5rem 1.5rem;
   }
 
-  .logoText {
-    font-size: 0.75rem;
+  .logoImage {
+    height: 28px;
   }
 
   .main {
@@ -425,13 +417,8 @@
     padding: 1.25rem 1rem;
   }
 
-  .logoIcon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .logoText {
-    font-size: 0.7rem;
+  .logoImage {
+    height: 24px;
   }
 
   .contactButton {

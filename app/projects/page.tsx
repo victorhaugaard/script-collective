@@ -77,17 +77,7 @@ export default function ProjectsPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <div className={styles.logoIcon}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M4 4L10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M4 10L10 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M4 16L10 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M18 6L24 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M18 12L24 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="1.5" opacity="0.3"/>
-            </svg>
-          </div>
-          <span className={styles.logoText}>SCRIPT COLLECTIVE</span>
+          <img src="/logo.png" alt="Script Collective" className={styles.logoImage} />
         </div>
         <div className={styles.headerActions}>
           <button onClick={() => router.push('/')} className={styles.homeButton}>
