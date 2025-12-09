@@ -9,7 +9,8 @@ export default function ProjectsPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const railSeekersVideoRef = useRef<HTMLVideoElement>(null)
+  const redditCrawlerVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     // Check if user is already authenticated
@@ -20,9 +21,12 @@ export default function ProjectsPage() {
   }, [])
 
   useEffect(() => {
-    // Set video playback speed to 2.5x
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 2.5
+    // Set video playback speed to 2.5x for both videos
+    if (railSeekersVideoRef.current) {
+      railSeekersVideoRef.current.playbackRate = 2.5
+    }
+    if (redditCrawlerVideoRef.current) {
+      redditCrawlerVideoRef.current.playbackRate = 2.5
     }
   }, [isAuthenticated])
 
@@ -109,7 +113,7 @@ export default function ProjectsPage() {
             <div className={styles.projectCard}>
               <div className={styles.projectImage}>
                 <video
-                  ref={videoRef}
+                  ref={railSeekersVideoRef}
                   className={styles.projectPreview}
                   autoPlay
                   loop
@@ -123,8 +127,8 @@ export default function ProjectsPage() {
               <div className={styles.projectInfo}>
                 <h3 className={styles.projectTitle}>Rail Seekers</h3>
                 <p className={styles.projectDescription}>
-                  A modern platform for discovering and planning scenic railway journeys across Europe. 
-                  Built with Next.js and featuring interactive route planning, community reviews, and 
+                  A modern platform for discovering and planning scenic railway journeys across Europe.
+                  Built with Next.js and featuring interactive route planning, community reviews, and
                   detailed itineraries.
                 </p>
                 <div className={styles.projectTags}>
@@ -133,9 +137,9 @@ export default function ProjectsPage() {
                   <span className={styles.tag}>Travel Tech</span>
                 </div>
                 <div className={styles.projectLinks}>
-                  <a 
-                    href="https://www.railseekers.com" 
-                    target="_blank" 
+                  <a
+                    href="https://www.railseekers.com"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className={styles.projectLink}
                   >
@@ -145,13 +149,42 @@ export default function ProjectsPage() {
               </div>
             </div>
 
-            {/* Placeholder for more projects */}
+            {/* Reddit Idea Crawler Project */}
             <div className={styles.projectCard}>
-              <div className={styles.projectPlaceholder}>
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 5V19M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-                <p>More projects coming soon</p>
+              <div className={styles.projectImage}>
+                <video
+                  ref={redditCrawlerVideoRef}
+                  className={styles.projectPreview}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ transform: 'scale(1)', transformOrigin: 'center' }}
+                >
+                  <source src="/reddit_idea_crawler.webm" type="video/webm" />
+                </video>
+              </div>
+              <div className={styles.projectInfo}>
+                <h3 className={styles.projectTitle}>Reddit Idea Crawler</h3>
+                <p className={styles.projectDescription}>
+                  Automated data collection tool for discovering and analyzing trending ideas and discussions
+                  from Reddit. Built with Express.js and Node.js, featuring real-time scraping and intelligent
+                  data processing.
+                </p>
+                <div className={styles.projectTags}>
+                  <span className={styles.tag}>Node.js</span>
+                  <span className={styles.tag}>Express</span>
+                  <span className={styles.tag}>Reddit API</span>
+                  <span className={styles.tag}>Data Processing</span>
+                </div>
+                <div className={styles.projectLinks}>
+                  <a
+                    href="mailto:hello@scriptcollective.com?subject=Reddit Crawler Demo Request"
+                    className={styles.projectLink}
+                  >
+                    Request Demo →
+                  </a>
+                </div>
               </div>
             </div>
           </div>

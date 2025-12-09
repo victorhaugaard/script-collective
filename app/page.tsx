@@ -184,14 +184,23 @@ export default function Home() {
                     required
                   />
                   {error && <p className={styles.errorMessage}>{error}</p>}
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className={styles.submitButton}
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Submitting...' : 'Submit Request'}
                   </button>
                 </form>
+                <div className={styles.divider}>
+                  <span>or</span>
+                </div>
+                <button
+                  onClick={() => window.location.href = '/projects'}
+                  className={styles.loginButton}
+                >
+                  Already have access? Login
+                </button>
               </>
             )}
           </div>
