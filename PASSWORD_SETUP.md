@@ -2,16 +2,12 @@
 
 The `/projects` page is password-protected to control access to your portfolio.
 
-## Default Password
-
-Current password: **`sc2025`**
-
 ## How to Change the Password
 
 1. Open `app/projects/page.tsx`
 2. Find line 26:
    ```typescript
-   const ACCESS_PASSWORD = 'sc2025'
+   const ACCESS_PASSWORD = 'EXAMPLE_PASSWORD'
    ```
 3. Change to your desired password
 4. Commit and push to redeploy
