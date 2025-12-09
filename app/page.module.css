@@ -260,10 +260,28 @@
   line-height: 1.6;
 }
 
+.aboutContent {
+  margin-bottom: 2.5rem;
+}
+
+.aboutText {
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.aboutText:last-child {
+  margin-bottom: 0;
+}
+
 .contactInfo {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contactItem {

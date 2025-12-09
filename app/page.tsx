@@ -54,7 +54,7 @@ export default function Home() {
           className={styles.contactButton}
           onClick={() => setIsContactOpen(true)}
         >
-          Contact
+          About
         </button>
       </header>
 
@@ -86,7 +86,7 @@ export default function Home() {
         <div className={styles.grid}></div>
       </main>
 
-      {/* Contact Modal */}
+      {/* About Modal */}
       {isContactOpen && (
         <div className={styles.modalOverlay} onClick={() => setIsContactOpen(false)}>
           <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -98,7 +98,21 @@ export default function Home() {
                 <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
               </svg>
             </button>
-            <h2 className={styles.modalTitle}>Contact</h2>
+            <h2 className={styles.modalTitle}>About Script Collective</h2>
+            <div className={styles.aboutContent}>
+              <p className={styles.aboutText}>
+                Script Collective is a full-stack development studio building future software with precision and artistry. We craft digital experiences that combine solid technical work with thoughtful design.
+              </p>
+              <p className={styles.aboutText}>
+                Our expertise spans consultancy services and in-house projects, delivering solutions across web applications, mobile platforms, and enterprise systems. We partner with forward-thinking companies to transform ideas into digital products.
+              </p>
+              <p className={styles.aboutText}>
+                From concept to deployment, we bring together strategic thinking and modern technology to create software that makes an impact.
+              </p>
+              <p className={styles.aboutText}>
+                Got an interesting project in mind? We'd love to hear about it. Drop us a line and let's see what we can build together.
+              </p>
+            </div>
             <div className={styles.contactInfo}>
               <div className={styles.contactItem}>
                 <span className={styles.contactLabel}>CEO</span>
@@ -106,8 +120,8 @@ export default function Home() {
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactLabel}>Email</span>
-                <a href="mailto:victor@scriptcollective.com" className={styles.contactValue}>
-                  victor@scriptcollective.com
+                <a href="mailto:victortomashaugaard@gmail.com" className={styles.contactValue}>
+                  victortomashaugaard@gmail.com
                 </a>
               </div>
             </div>
