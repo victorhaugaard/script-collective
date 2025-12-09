@@ -245,7 +245,7 @@ export default function ProjectsPage() {
       </main>
 
       <footer className={styles.footer}>
-        <p>© 2024 Script Collective. All rights reserved.</p>
+        <p>© 2025 Script Collective. All rights reserved.</p>
       </footer>
     </div>
   )
