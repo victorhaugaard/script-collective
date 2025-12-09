@@ -120,8 +120,8 @@ export default function Home() {
               </div>
               <div className={styles.contactItem}>
                 <span className={styles.contactLabel}>Email</span>
-                <a href="mailto:victortomashaugaard@gmail.com" className={styles.contactValue}>
-                  victortomashaugaard@gmail.com
+                <a href="mailto:hello@scriptcollective.com" className={styles.contactValue}>
+                  hello@scriptcollective.com
                 </a>
               </div>
             </div>
