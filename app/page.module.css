@@ -141,14 +141,14 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.3;
+  opacity: 0.4;
   pointer-events: none;
 }
 
 .decorativeOrb1 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(201, 168, 101, 0.2) 0%, rgba(201, 168, 101, 0) 70%);
+  background: radial-gradient(circle, rgba(201, 168, 101, 0.25) 0%, rgba(201, 168, 101, 0) 70%);
   top: -200px;
   right: -200px;
   animation: float 20s ease-in-out infinite;
@@ -157,7 +157,7 @@
 .decorativeOrb2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(201, 168, 101, 0.15) 0%, rgba(201, 168, 101, 0) 70%);
+  background: radial-gradient(circle, rgba(201, 168, 101, 0.2) 0%, rgba(201, 168, 101, 0) 70%);
   bottom: -150px;
   left: -150px;
   animation: float 25s ease-in-out infinite reverse;
@@ -179,11 +179,11 @@
   right: 0;
   bottom: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* Modal */
