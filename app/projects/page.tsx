@@ -11,6 +11,7 @@ export default function ProjectsPage() {
   const router = useRouter()
   const railSeekersVideoRef = useRef<HTMLVideoElement>(null)
   const redditCrawlerVideoRef = useRef<HTMLVideoElement>(null)
+  const ergoKeysVideoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     // Check if user is already authenticated
@@ -21,12 +22,15 @@ export default function ProjectsPage() {
   }, [])
 
   useEffect(() => {
-    // Set video playback speed to 2.5x for both videos
+    // Set video playback speed to 2.5x for all videos
     if (railSeekersVideoRef.current) {
       railSeekersVideoRef.current.playbackRate = 2.5
     }
     if (redditCrawlerVideoRef.current) {
       redditCrawlerVideoRef.current.playbackRate = 2.5
+    }
+    if (ergoKeysVideoRef.current) {
+      ergoKeysVideoRef.current.playbackRate = 2.5
     }
   }, [isAuthenticated])
 
@@ -180,6 +184,55 @@ export default function ProjectsPage() {
                 <div className={styles.projectLinks}>
                   <a
                     href="mailto:hello@scriptcollective.com?subject=Reddit Crawler Demo Request"
+                    className={styles.projectLink}
+                  >
+                    Request Demo →
+                  </a>
+                </div>
+                <div className={styles.divider}>
+                  <span>or</span>
+                </div>
+                <button
+                  onClick={() => window.open('https://reddit-idea-crawler.vercel.app', '_blank')}
+                  className={styles.accessButton}
+                >
+                  Already have access? Visit App
+                </button>
+              </div>
+            </div>
+
+            {/* ErgoKeys Project */}
+            <div className={styles.projectCard}>
+              <div className={styles.projectImage}>
+                <video
+                  ref={ergoKeysVideoRef}
+                  className={styles.projectPreview}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ transform: 'scale(1)', transformOrigin: 'center' }}
+                >
+                  <source src="/ergokeys.webm" type="video/webm" />
+                </video>
+              </div>
+              <div className={styles.projectInfo}>
+                <h3 className={styles.projectTitle}>ErgoKeys</h3>
+                <p className={styles.projectDescription}>
+                  Custom ergonomic keyboard design tool using computer vision to scan individual hand
+                  kinematics via webcam or photo. Automatically generates personalized PCB designs for
+                  split keyboards, then provides assembly guides and part lists for building your
+                  perfect ergonomic keyboard.
+                </p>
+                <div className={styles.projectTags}>
+                  <span className={styles.tag}>Computer Vision</span>
+                  <span className={styles.tag}>PCB Design</span>
+                  <span className={styles.tag}>Hardware</span>
+                  <span className={styles.tag}>Ergonomics</span>
+                </div>
+                <div className={styles.projectLinks}>
+                  <a
+                    href="mailto:hello@scriptcollective.com?subject=ErgoKeys Demo Request"
                     className={styles.projectLink}
                   >
                     Request Demo →
