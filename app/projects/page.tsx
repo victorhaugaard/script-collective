@@ -30,7 +30,7 @@ export default function ProjectsPage() {
     e.preventDefault()
     
     // Simple password check - you can change this password
-    const ACCESS_PASSWORD = 'scriptcollective2024'
+    const ACCESS_PASSWORD = 'sc2025'
     
     if (password === ACCESS_PASSWORD) {
       sessionStorage.setItem('sc_authenticated', 'true')
