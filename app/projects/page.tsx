@@ -85,7 +85,7 @@ export default function ProjectsPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.logo} onClick={() => router.push('/')} style={{ cursor: 'pointer' }}>
-          <img src="/logo.svg" alt="Script Collective" className={styles.logoImage} />
+          <img src="/logo.png" alt="Script Collective" className={styles.logoImage} />
         </div>
         <div className={styles.headerActions}>
           <button onClick={() => router.push('/')} className={styles.homeButton}>
